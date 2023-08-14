@@ -1,0 +1,24 @@
+{
+    "name": "philmish/phpunit-testdriver",
+    "description": "Extension for streaming PHPUnit events to testdriver.nvim",
+    "type": "library",
+    "require": {
+        "phpunit/phpunit": "^10.3"
+    },
+    "require-dev": {
+        "vimeo/psalm": "^5.14",
+        "psalm/plugin-phpunit": "^0.18.4"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Philmish\\PhpunitTestdriver\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "philmish",
+            "email": "thantalosdream@protonmail.com"
+        }
+    ]
+}
