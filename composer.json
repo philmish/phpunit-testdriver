@@ -11,9 +11,9 @@
     },
     "license": "MIT",
     "autoload": {
-        "psr-4": {
-            "Philmish\\PhpunitTestdriver\\": "src/"
-        }
+        "classmap": [
+            "src/"
+        ]
     },
     "authors": [
         {

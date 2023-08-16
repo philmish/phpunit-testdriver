@@ -2,12 +2,25 @@
 
 namespace Philmish\PhpunitTestdriver\Subscribers;
 
+use Philmish\PhpunitTestdriver\Events\TestFailedEvent;
 use PHPUnit\Event\Code\TestMethod;
 use PHPUnit\Event\Test\Failed;
 use PHPUnit\Event\Test\FailedSubscriber;
 
 
 final class FailedNotifier implements FailedSubscriber {
+
+    use SendJsonToStdout;
+
+    private function sendEventData(TestMethod $test) {
+        $eventData = new TestFailedEvent(
+            $test->file(),
+            $test->className(),
+            $test->name(),
+            $test->line(),
+        );
+        $this->sendToStdout($eventData->toArray());
+    }
     
     public function notify(Failed $event): void {
         $test = $event->test();
@@ -15,18 +28,7 @@ final class FailedNotifier implements FailedSubscriber {
             /**
              * @var TestMethod $test
              */
-            $notification = [
-                "event" => "test.failed",
-                "file" => $test->file(),
-                "class" => $test->className(),
-                "name" => $test->name(),
-                "line" => $test->line(),
-            ];
-            $encoded = json_encode($notification);
-            $encoded = $encoded . "\n";
-            $out = fopen("php://stdout", "w");
-            fputs($out, $encoded);
-            fclose($out);
+            $this->sendEventData($test);
         }
     }
 }

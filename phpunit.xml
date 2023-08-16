@@ -10,7 +10,7 @@
     failOnWarning="true" 
     colors="true" 
     cacheDirectory=".phpunit.cache" 
-    crequireCoverageMetadata="true" 
+    requireCoverageMetadata="true" 
     beStrictAboutCoverageMetadata="true"
     >
   <testsuites>

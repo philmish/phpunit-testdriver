@@ -10,7 +10,7 @@ use PHPUnit\TextUI\Configuration\Configuration;
 use Philmish\PhpunitTestdriver\Subscribers\FailedNotifier;
 use Philmish\PhpunitTestdriver\Subscribers\PassedNotifier;
 
-final class TestdriverExtension implements Extension  {
+final class TestdriverExtension implements Extension {
     
     public function bootstrap(Configuration $configuration, Facade $facade, ParameterCollection $parameters): void {
         $facade->registerSubscribers(
